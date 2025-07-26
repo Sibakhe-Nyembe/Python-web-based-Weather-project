@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Watcher ☀</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 40px;">
+        <h1>Weather Watcher</h1> 
+        <form method = "POST">
+            <input type = "text" name="city" placeholder="Enter city name" required>
+            <button type="submit">Check the weather</button>
+        </form> 
+
+        {% if weather %}
+             <div class="weather_app">
+                <h2>☁ {{ weather.city}}</h2>
+                <p>🌤 {{ weather.description }}</p>
+                <p>🌡️ Temperature: {{ weather.temp }}°C</p>
+                <p>  Humidity: {{ weather.humidity }}%</p>
+                <p>  Wind: {{ weather.wind }} m/s</p>
+            </div>
+
+        {% endif %} 
+        
+        {% if error %}
+             <p>error{{ error }}</p>
+             {%endif %}
+</body>
+</html>
